@@ -89,20 +89,24 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
+  },
+  ["vim-rooter"] = {
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-rooter"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gruvbox-material
-time([[Config for gruvbox-material]], true)
-    	vim.cmd("colorscheme gruvbox")
-    
-time([[Config for gruvbox-material]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 		require('nvim-autopairs').setup{}
 	
 time([[Config for nvim-autopairs]], false)
+-- Config for: gruvbox-material
+time([[Config for gruvbox-material]], true)
+    	vim.cmd("colorscheme gruvbox")
+    
+time([[Config for gruvbox-material]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

@@ -10,3 +10,16 @@ require('telescope').setup{
 		}
 	}
 }
+
+local M = {}
+
+
+return setmetatable(
+    {},
+    {
+        __index = function(_, k)
+            reloader()
+            return M[k]
+        end
+    }
+)

@@ -5,13 +5,19 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
+
+  use {
+    'airblade/vim-rooter',
+  }
+
   use {
     'nvim-telescope/telescope.nvim',
     cmd = "Telescope",
     requires = { {'nvim-lua/plenary.nvim'} },
     config = [[
       require('config.telescope')
-    ]]
+    ]],
+    after="vim-rooter"
   }
 
   use {
