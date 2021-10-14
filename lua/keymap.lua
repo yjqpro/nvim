@@ -51,4 +51,4 @@ map {'n', '<leader>q', ':q<cr>'}
 map {'n', '<leader>w', ':w<cr>'}
 
 -- vim-fugitive
-map {'n', '<leader>G', ':G<cr>'}
+map {'n', '<leader>gs', ':G<cr>'}
