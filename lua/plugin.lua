@@ -9,8 +9,10 @@ return require('packer').startup(function(use)
 	use {
 		'airblade/vim-rooter',
 		config = [[
+    vim.g.rooter_silent_chdir = 1
 		vim.g.rooter_patterns = {'.git', '.root'}
-		]]
+		]],
+    fn='FindRootDirectory'
 	}
 
 	use {
