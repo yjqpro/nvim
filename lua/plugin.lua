@@ -51,6 +51,11 @@ return require('packer').startup(function(use)
 	}
 
   use 'tpope/vim-abolish'
+  
+  use {
+    'tpope/vim-fugitive',
+    cmd = {'Git', 'G'}
+  }
 
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'

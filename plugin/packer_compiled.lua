@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?.lua;C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
-local install_cpath_pattern = "C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\lua\\5.1\\?.so"
+local package_path_str = "/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -72,66 +72,73 @@ _G.packer_plugins = {
   ["gruvbox-material"] = {
     config = { '\t\tvim.cmd("colorscheme gruvbox")\n\t\t' },
     loaded = true,
-    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox-material"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/gruvbox-material"
   },
   ["nvim-autopairs"] = {
     config = { "\t\trequire('nvim-autopairs').setup{}\n\t\t" },
     loaded = true,
-    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
     config = { "\t\trequire('config.telescope')\n\t\t" },
-    load_after = {},
+    load_after = {
+      ["vim-rooter"] = true
+    },
     loaded = false,
     needs_bufread = true,
-    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\telescope.nvim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
   },
   ["vim-abolish"] = {
     loaded = true,
-    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-abolish"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-abolish"
   },
   ["vim-clang-format"] = {
     config = { "      vim.g['clang_format#auto_format'] = 1\n      vim.g['clang_format#code_style'] = 'chromium'\n      vim.g['clang_format#style_options'] = {SortIncludes = 'false'}\n    " },
     loaded = false,
     needs_bufread = false,
-    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vim-clang-format"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-clang-format"
+  },
+  ["vim-fugitive"] = {
+    commands = { "Git", "G" },
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-fugitive"
   },
   ["vim-rooter"] = {
     after = { "telescope.nvim" },
-    loaded = true,
-    only_config = true
+    config = { "    vim.g.rooter_silent_chdir = 1\n\t\tvim.g.rooter_patterns = {'.git', '.root'}\n\t\t" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-rooter"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-surround"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gruvbox-material
-time([[Config for gruvbox-material]], true)
-		vim.cmd("colorscheme gruvbox")
-		
-time([[Config for gruvbox-material]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 		require('nvim-autopairs').setup{}
 		
 time([[Config for nvim-autopairs]], false)
--- Config for: vim-rooter
-time([[Config for vim-rooter]], true)
-		vim.g.rooter_patterns = {'.git', '.root'}
+-- Config for: gruvbox-material
+time([[Config for gruvbox-material]], true)
+		vim.cmd("colorscheme gruvbox")
 		
-time([[Config for vim-rooter]], false)
+time([[Config for gruvbox-material]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file G lua require("packer.load")({'vim-fugitive'}, { cmd = "G", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Git lua require("packer.load")({'vim-fugitive'}, { cmd = "Git", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -140,6 +147,10 @@ vim.cmd [[au!]]
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType cpp ++once lua require("packer.load")({'vim-clang-format'}, { ft = "cpp" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
+  -- Function lazy-loads
+time([[Defining lazy-load function autocommands]], true)
+vim.cmd[[au FuncUndefined FindRootDirectory ++once lua require("packer.load")({'vim-rooter'}, {}, _G.packer_plugins)]]
+time([[Defining lazy-load function autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
