@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/yjqpro/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?.lua;C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
+local install_cpath_pattern = "C:\\Users\\yjqpr\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\lua\\5.1\\?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -70,29 +70,35 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["gruvbox-material"] = {
-    config = { '    \tvim.cmd("colorscheme gruvbox")\n    ' },
+    config = { '\t\tvim.cmd("colorscheme gruvbox")\n\t\t' },
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox-material"
   },
   ["nvim-autopairs"] = {
-    config = { "\t\trequire('nvim-autopairs').setup{}\n\t" },
+    config = { "\t\trequire('nvim-autopairs').setup{}\n\t\t" },
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim"
   },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
-    config = { "      require('config.telescope')\n    " },
+    config = { "\t\trequire('config.telescope')\n\t\t" },
+    load_after = {},
     loaded = false,
     needs_bufread = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\telescope.nvim"
   },
   ["vim-rooter"] = {
+    after = { "telescope.nvim" },
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-rooter"
+    only_config = true
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround"
   }
 }
 
@@ -100,13 +106,18 @@ time([[Defining packer_plugins]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 		require('nvim-autopairs').setup{}
-	
+		
 time([[Config for nvim-autopairs]], false)
 -- Config for: gruvbox-material
 time([[Config for gruvbox-material]], true)
-    	vim.cmd("colorscheme gruvbox")
-    
+		vim.cmd("colorscheme gruvbox")
+		
 time([[Config for gruvbox-material]], false)
+-- Config for: vim-rooter
+time([[Config for vim-rooter]], true)
+		vim.g.rooter_patterns = {'.git', '.root'}
+		
+time([[Config for vim-rooter]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
