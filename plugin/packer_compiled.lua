@@ -91,6 +91,16 @@ _G.packer_plugins = {
     needs_bufread = true,
     path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\telescope.nvim"
   },
+  ["vim-abolish"] = {
+    loaded = true,
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-abolish"
+  },
+  ["vim-clang-format"] = {
+    config = { "      vim.g['clang_format#auto_format'] = 1\n      vim.g['clang_format#code_style'] = 'chromium'\n      vim.g['clang_format#style_options'] = {SortIncludes = 'false'}\n    " },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vim-clang-format"
+  },
   ["vim-rooter"] = {
     after = { "telescope.nvim" },
     loaded = true,
@@ -103,16 +113,16 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-		require('nvim-autopairs').setup{}
-		
-time([[Config for nvim-autopairs]], false)
 -- Config for: gruvbox-material
 time([[Config for gruvbox-material]], true)
 		vim.cmd("colorscheme gruvbox")
 		
 time([[Config for gruvbox-material]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+		require('nvim-autopairs').setup{}
+		
+time([[Config for nvim-autopairs]], false)
 -- Config for: vim-rooter
 time([[Config for vim-rooter]], true)
 		vim.g.rooter_patterns = {'.git', '.root'}
@@ -124,6 +134,13 @@ time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'vim-clang-format'}, { ft = "cpp" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

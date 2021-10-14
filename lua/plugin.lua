@@ -38,6 +38,18 @@ return require('packer').startup(function(use)
 
 	use 'tpope/vim-surround'
 
+	use {
+		'rhysd/vim-clang-format',
+		ft = {'cpp'},
+    config = [[
+      vim.g['clang_format#auto_format'] = 1
+      vim.g['clang_format#code_style'] = 'chromium'
+      vim.g['clang_format#style_options'] = {SortIncludes = 'false'}
+    ]]
+	}
+
+  use 'tpope/vim-abolish'
+
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'
 	-- use 'foo2/bar2.nvim'
