@@ -92,6 +92,11 @@ return require('packer').startup(function(use)
     }
   }
 
+  use {
+    'tpope/vim-unimpaired',
+    opt = true
+  }
+
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'
 	-- use 'foo2/bar2.nvim'
