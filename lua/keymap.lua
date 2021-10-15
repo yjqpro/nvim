@@ -29,9 +29,11 @@ endfunction
 ]]
 -- vim.api.nvim_set_keymap('n', '<c-p>', '<cmd>Telescope find_files<cr>', {noremap = true})
 map {'n', '<c-p>', '"<cmd>Telescope find_files cwd=".FindRootDirectoryOrCwd()."<cr>"', expr = true }
+map {'n', '<c-n>', '<cmd>Telescope oldfiles<cr>'}
 map {'n', '<leader>fg', '<cmd>Telescope live_grep<cr>'}
 map {'n', '<leader>fw', '"<cmd>Telescope grep_string cwd=".FindRootDirectoryOrCwd()."<cr>"', expr = true }
 map {'n', '<leader>ev', ':e $MYVIMRC<cr>'}
+
 map {'n', '<leader>E', ':e %<.'}
 
 

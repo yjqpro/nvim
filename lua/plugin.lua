@@ -57,6 +57,20 @@ return require('packer').startup(function(use)
     cmd = {'Git', 'G'}
   }
 
+
+  -- text object
+  use {
+    'kana/vim-textobj-user',
+    opt = true
+  }
+
+  use {
+	  'sgur/vim-textobj-parameter',
+    opt = true,
+    requires = 'kana/vim-textobj-user',
+    after = 'vim-textobj-user'
+  }
+
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'
 	-- use 'foo2/bar2.nvim'
