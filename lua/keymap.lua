@@ -54,3 +54,12 @@ map {'n', '<leader>w', ':w<cr>'}
 
 -- vim-fugitive
 map {'n', '<leader>gs', ':G<cr>'}
+
+
+-- AsyncTask
+
+
+map {'n', '<F7>', '<cmd>AsyncTask file-build<cr>'}
+
+map {'n', '<F10>', ':call asyncrun#quickfix_toggle(6)<cr>'}
+

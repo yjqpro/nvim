@@ -69,6 +69,22 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["asyncrun.vim"] = {
+    config = { "          vim.g.asyncrun_open = 8\n        " },
+    load_after = {
+      ["asynctasks.vim"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\asyncrun.vim"
+  },
+  ["asynctasks.vim"] = {
+    after = { "asyncrun.vim" },
+    commands = { "AsyncRun", "AsyncStop", "AsyncTask", "AsyncTaskEdit" },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\yjqpr\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\asynctasks.vim"
+  },
   ["gruvbox-material"] = {
     config = { '\t\tvim.cmd("colorscheme gruvbox")\n\t\t' },
     loaded = true,
@@ -137,22 +153,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-		require('nvim-autopairs').setup{}
-		
-time([[Config for nvim-autopairs]], false)
 -- Config for: gruvbox-material
 time([[Config for gruvbox-material]], true)
 		vim.cmd("colorscheme gruvbox")
 		
 time([[Config for gruvbox-material]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+		require('nvim-autopairs').setup{}
+		
+time([[Config for nvim-autopairs]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Git lua require("packer.load")({'vim-fugitive'}, { cmd = "Git", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncRun lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncRun", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncStop lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncStop", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncTask lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncTask", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncTaskEdit lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncTaskEdit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file G lua require("packer.load")({'vim-fugitive'}, { cmd = "G", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Git lua require("packer.load")({'vim-fugitive'}, { cmd = "Git", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

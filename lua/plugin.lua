@@ -71,6 +71,27 @@ return require('packer').startup(function(use)
     after = 'vim-textobj-user'
   }
 
+  -- skywin3000
+  use {
+    'skywind3000/asynctasks.vim',
+    opt = true,
+    cmd = { 
+      'AsyncRun',
+      'AsyncStop',
+      'AsyncTask',
+      'AsyncTaskEdit'
+    },
+    requires = {
+      { 
+        'skywind3000/asyncrun.vim', 
+        opt = true,
+        config = [[
+          vim.g.asyncrun_open = 8
+        ]]
+      }
+    }
+  }
+
 	-- My plugins here
 	-- use 'foo1/bar1.nvim'
 	-- use 'foo2/bar2.nvim'
