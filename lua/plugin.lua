@@ -9,8 +9,8 @@ return require('packer').startup(function(use)
 	use {
 		'airblade/vim-rooter',
 		config = [[
-    vim.g.rooter_silent_chdir = 1
-		vim.g.rooter_patterns = {'.git', '.root'}
+      vim.g.rooter_silent_chdir = 1
+      vim.g.rooter_patterns = {'.git', '.root'}
 		]],
     fn='FindRootDirectory'
 	}
@@ -18,11 +18,20 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim',
 		cmd = "Telescope",
-		requires = { {'nvim-lua/plenary.nvim'} },
+		requires = { 
+      {'nvim-lua/plenary.nvim', opt = true},
+      {'nvim-telescope/telescope-fzf-native.nvim', run = "make", opt=true},
+      -- require sqlite: brew install sqlite
+      {"nvim-telescope/telescope-frecency.nvim", opt = true, wants = 'sqlite.lua', requires = {{"tami5/sqlite.lua", opt = true}}}
+    },
 		config = [[
-		require('config.telescope')
+		  require('config.telescope')
 		]],
-		after="vim-rooter"
+    wants = {
+			"plenary.nvim",
+			"telescope-fzf-native.nvim",
+      "telescope-frecency.nvim",
+    }
 	}
 
 	use {
