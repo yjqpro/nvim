@@ -10,3 +10,4 @@ vim.schedule(function()
     require('packer').loader('vim-unimpaired')
   end, 50)
 end)
+
