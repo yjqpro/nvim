@@ -17,11 +17,11 @@ return require('packer').startup(function(use)
 		]],
         fn = 'FindRootDirectory'
     }
-    
+
     use {
-      "tami5/sqlite.lua", 
+      "tami5/sqlite.lua",
       config = [[
-        if vim.fn.has('win32') then
+        if vim.fn.has('win32')  ~= 0 then
           vim.g.sqlite_clib_path = "d:/libs/sqlite/sqlite3.dll"
         end
       ]],
