@@ -17,6 +17,16 @@ return require('packer').startup(function(use)
 		]],
         fn = 'FindRootDirectory'
     }
+    
+    use {
+      "tami5/sqlite.lua", 
+      config = [[
+        if vim.fn.has('win32') then
+          vim.g.sqlite_clib_path = "d:/libs/sqlite/sqlite3.dll"
+        end
+      ]],
+      opt = true
+    }
 
     use {
         'nvim-telescope/telescope.nvim',
@@ -32,7 +42,9 @@ return require('packer').startup(function(use)
                 "nvim-telescope/telescope-frecency.nvim",
                 opt = true,
                 wants = 'sqlite.lua',
-                requires = {{"tami5/sqlite.lua", opt = true}}
+                requires = {
+                  "sqlite"
+                }
             }
         },
         config = [[
@@ -44,12 +56,13 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {
-        'sainnhe/gruvbox-material',
-        config = [[
-		vim.cmd("colorscheme gruvbox")
-		]]
-    }
+    -- use {
+    --     'sainnhe/gruvbox-material',
+    --     config = [[
+		-- vim.cmd("colorscheme gruvbox-material")
+    -- vim.g.gruvbox_material_palette = 'original'
+		-- ]]
+    -- }
 
     use {
         'windwp/nvim-autopairs',
@@ -67,7 +80,8 @@ return require('packer').startup(function(use)
       vim.g['clang_format#auto_format'] = 1
       vim.g['clang_format#code_style'] = 'chromium'
       vim.g['clang_format#style_options'] = {SortIncludes = 'false'}
-    ]]
+    ]],
+      disable = true
     }
 
     use 'tpope/vim-abolish'
@@ -122,5 +136,10 @@ return require('packer').startup(function(use)
     }
 
     use 'hrsh7th/cmp-nvim-lsp'
+
+    use {
+      'dstein64/vim-startuptime',
+      cmd = 'StartupTime'
+    }
 end)
 
