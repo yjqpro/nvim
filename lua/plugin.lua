@@ -43,15 +43,16 @@ return require('packer').startup(function(use)
                 opt = true,
                 wants = 'sqlite.lua',
                 requires = {
-                  "sqlite"
+                  "sqlite.lua"
                 }
             }
         },
         config = [[
-		  require('config.telescope')
-		]],
+		      require('config.telescope')
+		    ]],
         wants = {
-            "plenary.nvim", "telescope-fzf-native.nvim",
+            "plenary.nvim",
+            "telescope-fzf-native.nvim",
             "telescope-frecency.nvim"
         }
     }

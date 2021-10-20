@@ -18,6 +18,7 @@ vim.cmd("colorscheme gruvbox")
 
 require('plugin')
 require('basic')
+require('config')
 require('tabsize')
 require('style')
 require('keymap')
