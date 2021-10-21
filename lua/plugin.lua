@@ -57,13 +57,13 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- use {
-    --     'sainnhe/gruvbox-material',
-    --     config = [[
-		-- vim.cmd("colorscheme gruvbox-material")
-    -- vim.g.gruvbox_material_palette = 'original'
-		-- ]]
-    -- }
+    use {
+        'sainnhe/gruvbox-material',
+        config = [[
+          vim.cmd("colorscheme gruvbox-material")
+          vim.g.gruvbox_material_palette = 'original'
+        ]]
+    }
 
     use {
         'windwp/nvim-autopairs',
@@ -141,6 +141,13 @@ return require('packer').startup(function(use)
     use {
       'dstein64/vim-startuptime',
       cmd = 'StartupTime'
+    }
+
+    use {
+      'kyazdani42/nvim-web-devicons',
+      config = [[
+        require'nvim-web-devicons'.setup {}
+      ]]
     }
 end)
 
