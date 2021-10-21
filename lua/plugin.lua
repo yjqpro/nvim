@@ -116,13 +116,12 @@ pkr.startup(function(use)
 
     use {
         'rhysd/vim-clang-format',
-        ft = {'cpp'},
+        cmd = 'ClangFormat',
         config = [[
-      vim.g['clang_format#auto_format'] = 1
+      vim.g['clang_format#auto_format'] = 0
       vim.g['clang_format#code_style'] = 'chromium'
       vim.g['clang_format#style_options'] = {SortIncludes = 'false'}
     ]],
-      disable = true
     }
 
     use 'tpope/vim-abolish'
@@ -154,7 +153,7 @@ pkr.startup(function(use)
                 'skywind3000/asyncrun.vim',
                 opt = true,
                 config = [[
-          vim.g.asyncrun_open = 8
+          vim.g.asyncrun_open = 10
         ]]
             }
         }
