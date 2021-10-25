@@ -149,5 +149,7 @@ return require('packer').startup(function(use)
         require'nvim-web-devicons'.setup {}
       ]]
     }
+
+    use 'justinmk/vim-dirvish'
 end)
 
