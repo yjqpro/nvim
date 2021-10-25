@@ -57,13 +57,18 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {
-        'sainnhe/gruvbox-material',
-        config = [[
-          vim.cmd("colorscheme gruvbox-material")
-          vim.g.gruvbox_material_palette = 'original'
-        ]]
-    }
+   -- use {
+   --     'sainnhe/gruvbox-material',
+   --     config = [[
+   --       vim.cmd("colorscheme gruvbox-material")
+   --       vim.g.gruvbox_material_palette = 'original'
+   --     ]]
+   -- }
+
+    use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"},
+      config = [[
+        vim.cmd("colorscheme gruvbox")
+      ]]}
 
     use {
         'windwp/nvim-autopairs',
