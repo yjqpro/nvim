@@ -1,13 +1,48 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({
-        'git', 'clone', '--depth', '1',
-        'https://github.com/wbthomason/packer.nvim', install_path
-    })
+local cmd = vim.api.nvim_command
+-- packer.nvim
+--
+-- Install packer.nvim if it's not ready.
+--
+-- To know whether packer.nvim is installn or not, check this folder exists:
+--
+--  $DATA/site/pack/packer/start/packer.nvim
+--
+local packer_install_path = fn.stdpath('data') ..
+                                '/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(packer_install_path)) > 0 then
+  fn.system({
+      'git', 'clone', '--depth', '1',
+      'https://github.com/wbthomason/packer.nvim', packer_install_path
+  })
 end
 
-return require('packer').startup(function(use)
+cmd('packadd packer.nvim')
+
+--
+-- Auto recompile plugins when changes in plugin.lua
+--
+vim.cmd [[
+augroup packer_recompile
+  autocmd!
+  autocmd BufWritePost */lua/plugins.lua echom "Recompile!" | source <afile> | PackerCompile
+augroup END
+]]
+
+local pkr = require('packer')
+pkr.init({
+  ensure_dependencies = true,
+  display = {
+    auto_clean = false,
+    open_fn = function()
+      return require('packer.util').float {border = 'single'}
+    end
+  }
+})
+
+pkr.startup(function(use)
+    use 'wbthomason/packer.nvim'
 
     use {
         'airblade/vim-rooter',
@@ -95,7 +130,12 @@ return require('packer').startup(function(use)
     use {'tpope/vim-fugitive', cmd = {'Git', 'G'}}
 
     -- text object
-    use {'kana/vim-textobj-user', opt = true}
+    use {'kana/vim-textobj-user',
+      opt = true,
+      setup = function()
+        require('utils').packer_lazy_load 'vim-textobj-user'
+      end
+    }
 
     use {
         'sgur/vim-textobj-parameter',
@@ -120,7 +160,13 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {'tpope/vim-unimpaired', opt = true}
+    use {
+      'tpope/vim-unimpaired',
+      opt = true,
+      setup = function()
+        require('utils').packer_lazy_load 'vim-unimpaired'
+      end
+    }
 
     use {
         'neovim/nvim-lspconfig',

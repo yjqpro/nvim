@@ -90,6 +90,15 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
   },
+  ["gruvbox.nvim"] = {
+    config = { '        vim.cmd("colorscheme gruvbox")\n      ' },
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/gruvbox.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/lush.nvim"
+  },
   ["nvim-autopairs"] = {
     config = { "\t\trequire('nvim-autopairs').setup{}\n\t\t" },
     loaded = true,
@@ -106,6 +115,15 @@ _G.packer_plugins = {
     needs_bufread = false,
     only_cond = false,
     path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
+  },
+  ["nvim-web-devicons"] = {
+    config = { "        require'nvim-web-devicons'.setup {}\n      " },
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["packer.nvim"] = {
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = false,
@@ -141,6 +159,10 @@ _G.packer_plugins = {
   ["vim-abolish"] = {
     loaded = true,
     path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-abolish"
+  },
+  ["vim-dirvish"] = {
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-dirvish"
   },
   ["vim-fugitive"] = {
     commands = { "Git", "G" },
@@ -188,6 +210,19 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: vim-textobj-user
+time([[Setup for vim-textobj-user]], true)
+try_loadstring("\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\21vim-textobj-user\21packer_lazy_load\nutils\frequire\0", "setup", "vim-textobj-user")
+time([[Setup for vim-textobj-user]], false)
+-- Setup for: vim-unimpaired
+time([[Setup for vim-unimpaired]], true)
+try_loadstring("\27LJ\2\nQ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\19vim-unimpaired\21packer_lazy_load\nutils\frequire\0", "setup", "vim-unimpaired")
+time([[Setup for vim-unimpaired]], false)
+-- Config for: nvim-web-devicons
+time([[Config for nvim-web-devicons]], true)
+        require'nvim-web-devicons'.setup {}
+      
+time([[Config for nvim-web-devicons]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 		require('nvim-autopairs').setup{}
@@ -202,17 +237,22 @@ time([[Config for nvim-cmp]], true)
         }
       
 time([[Config for nvim-cmp]], false)
+-- Config for: gruvbox.nvim
+time([[Config for gruvbox.nvim]], true)
+        vim.cmd("colorscheme gruvbox")
+      
+time([[Config for gruvbox.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncRun lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncRun", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncStop lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncStop", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncTask lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncTask", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'vim-startuptime'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncRun lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncRun", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncTaskEdit lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncTaskEdit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file G lua require("packer.load")({'vim-fugitive'}, { cmd = "G", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Git lua require("packer.load")({'vim-fugitive'}, { cmd = "Git", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'vim-startuptime'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
