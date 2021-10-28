@@ -102,6 +102,7 @@ pkr.startup(function(use)
 
     use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"},
       config = [[
+        vim.g.gruvbox_invert_selection=0
         vim.cmd("colorscheme gruvbox")
       ]]}
 
