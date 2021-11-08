@@ -22,6 +22,15 @@ for i = 1, 15 do
   g['loaded_' .. disabled_built_ins[i]] = 1
 end
 
+
+if vim.g.nvui then
+  vim.opt.guifont = "JetBrainsMono Nerd Font:h16"
+  -- Configure through vim commands
+  -- vim.cmd [[NvuiCmdFontFamily JetBrainsMono Nerd Font]]
+  -- vim.cmd [[NvuiCmdFontSize 25.0]]
+  -- vim.cmd [[NvuiScrollAnimationDuration 0.2]]
+end
+
 require('plugin')
 require('basic')
 require('config')
