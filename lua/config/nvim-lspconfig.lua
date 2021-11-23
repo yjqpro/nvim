@@ -53,6 +53,9 @@ end
 
 
 require'lspconfig'.ccls.setup{
+    init_options = {
+      compilationDatabaseDirectory = "build";
+    },
     on_attach = on_attach
 }
 
