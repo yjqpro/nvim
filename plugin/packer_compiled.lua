@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -70,13 +70,14 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["asyncrun.vim"] = {
-    config = { "          vim.g.asyncrun_open = 8\n        " },
+    config = { "          vim.g.asyncrun_open = 10\n        " },
     load_after = {
       ["asynctasks.vim"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/asyncrun.vim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/asyncrun.vim",
+    url = "https://github.com/skywind3000/asyncrun.vim"
   },
   ["asynctasks.vim"] = {
     after = { "asyncrun.vim" },
@@ -84,68 +85,93 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/asynctasks.vim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/asynctasks.vim",
+    url = "https://github.com/skywind3000/asynctasks.vim"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["gruvbox.nvim"] = {
-    config = { '        vim.cmd("colorscheme gruvbox")\n      ' },
+    config = { '        vim.g.gruvbox_invert_selection=0\n        vim.cmd("colorscheme gruvbox")\n      ' },
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/gruvbox.nvim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
+  ["lualine.nvim"] = {
+    config = { "        require('config.lualine')\n      " },
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/hoob3rt/lualine.nvim"
   },
   ["lush.nvim"] = {
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/lush.nvim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["nvim-autopairs"] = {
     config = { "\t\trequire('nvim-autopairs').setup{}\n\t\t" },
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     config = { "        require('cmp').setup{\n          sources = {\n            { name = 'nvim_lsp'}\n          }\n        }\n      " },
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-cmp"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-comment"] = {
+    config = { "        require('nvim_comment').setup {}\n      " },
+    loaded = true,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-lspconfig"] = {
     config = { "      require('config.nvim-lspconfig')\n    " },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-web-devicons"] = {
     config = { "        require'nvim-web-devicons'.setup {}\n      " },
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/plenary.nvim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["sqlite.lua"] = {
     config = { "        if vim.fn.has('win32')  ~= 0 then\n          vim.g.sqlite_clib_path = \"d:/libs/sqlite/sqlite3.dll\"\n        end\n      " },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/sqlite.lua"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/sqlite.lua",
+    url = "https://github.com/tami5/sqlite.lua"
   },
   ["telescope-frecency.nvim"] = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/telescope-frecency.nvim",
+    url = "https://github.com/nvim-telescope/telescope-frecency.nvim",
     wants = { "sqlite.lua" }
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/telescope-fzf-native.nvim"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
@@ -154,39 +180,55 @@ _G.packer_plugins = {
     needs_bufread = true,
     only_cond = false,
     path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim",
     wants = { "plenary.nvim", "telescope-fzf-native.nvim", "telescope-frecency.nvim" }
   },
   ["vim-abolish"] = {
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-abolish"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-abolish",
+    url = "https://github.com/tpope/vim-abolish"
+  },
+  ["vim-clang-format"] = {
+    commands = { "ClangFormat" },
+    config = { "      vim.g['clang_format#auto_format'] = 0\n      vim.g['clang_format#code_style'] = 'chromium'\n      vim.g['clang_format#style_options'] = {SortIncludes = 'false'}\n    " },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-clang-format",
+    url = "https://github.com/rhysd/vim-clang-format"
   },
   ["vim-dirvish"] = {
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-dirvish"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-dirvish",
+    url = "https://github.com/justinmk/vim-dirvish"
   },
   ["vim-fugitive"] = {
     commands = { "Git", "G" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-fugitive"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-rooter"] = {
     config = { "      vim.g.rooter_silent_chdir = 1\n      vim.g.rooter_patterns = {'.git', '.root'}\n\t\t" },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-rooter"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-rooter",
+    url = "https://github.com/airblade/vim-rooter"
   },
   ["vim-startuptime"] = {
     commands = { "StartupTime" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-startuptime"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-startuptime",
+    url = "https://github.com/dstein64/vim-startuptime"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   ["vim-textobj-parameter"] = {
     load_after = {
@@ -194,18 +236,21 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-textobj-parameter"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-textobj-parameter",
+    url = "https://github.com/sgur/vim-textobj-parameter"
   },
   ["vim-textobj-user"] = {
     after = { "vim-textobj-parameter" },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-textobj-user"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-textobj-user",
+    url = "https://github.com/kana/vim-textobj-user"
   },
   ["vim-unimpaired"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-unimpaired"
+    path = "/Users/yjqpro/.local/share/nvim/site/pack/packer/opt/vim-unimpaired",
+    url = "https://github.com/tpope/vim-unimpaired"
   }
 }
 
@@ -223,11 +268,6 @@ time([[Config for nvim-web-devicons]], true)
         require'nvim-web-devicons'.setup {}
       
 time([[Config for nvim-web-devicons]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-		require('nvim-autopairs').setup{}
-		
-time([[Config for nvim-autopairs]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
         require('cmp').setup{
@@ -237,22 +277,39 @@ time([[Config for nvim-cmp]], true)
         }
       
 time([[Config for nvim-cmp]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+		require('nvim-autopairs').setup{}
+		
+time([[Config for nvim-autopairs]], false)
+-- Config for: nvim-comment
+time([[Config for nvim-comment]], true)
+        require('nvim_comment').setup {}
+      
+time([[Config for nvim-comment]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+        require('config.lualine')
+      
+time([[Config for lualine.nvim]], false)
 -- Config for: gruvbox.nvim
 time([[Config for gruvbox.nvim]], true)
+        vim.g.gruvbox_invert_selection=0
         vim.cmd("colorscheme gruvbox")
       
 time([[Config for gruvbox.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncRun lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncRun", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncStop lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncStop", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncTask lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncTask", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncTaskEdit lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncTaskEdit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Git lua require("packer.load")({'vim-fugitive'}, { cmd = "Git", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file G lua require("packer.load")({'vim-fugitive'}, { cmd = "G", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'vim-startuptime'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncRun lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncRun", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file AsyncTaskEdit lua require("packer.load")({'asynctasks.vim'}, { cmd = "AsyncTaskEdit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file G lua require("packer.load")({'vim-fugitive'}, { cmd = "G", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Git lua require("packer.load")({'vim-fugitive'}, { cmd = "Git", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ClangFormat lua require("packer.load")({'vim-clang-format'}, { cmd = "ClangFormat", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

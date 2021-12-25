@@ -60,7 +60,7 @@ require'lspconfig'.ccls.setup{
 }
 
 require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {
         Lua = {
             runtime = {
