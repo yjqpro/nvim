@@ -224,5 +224,12 @@ pkr.startup(function(use)
         require('nvim_comment').setup {}
       ]]
     }
+
+    use {
+      "lyokha/vim-xkbswitch",
+      config = [[
+        vim.g.XkbSwitchEnabled = 1
+      ]]
+    }
 end)
 
